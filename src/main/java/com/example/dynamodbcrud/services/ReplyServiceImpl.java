@@ -22,11 +22,11 @@ public class ReplyServiceImpl implements ReplyService {
     private DynamoDBMapper dynamoDBMapper;
 
     @Override
-    public List<Reply> findRepliesInLast15Days(String forumName, String threadSubject) throws Exception {
+    public List<Reply> findRepliesInLastDays(String forumName, String threadSubject, int days) throws Exception {
 
         String partitionKey = forumName + "#" + threadSubject;
 
-        long twoWeeksAgoMilli = (new Date()).getTime() - (15L * 24L * 60L * 60L * 1000L);
+        long twoWeeksAgoMilli = (new Date()).getTime() - (days * 24L * 60L * 60L * 1000L);
         Date twoWeeksAgo = new Date();
         twoWeeksAgo.setTime(twoWeeksAgoMilli);
         SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");

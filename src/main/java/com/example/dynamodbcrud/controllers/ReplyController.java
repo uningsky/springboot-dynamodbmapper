@@ -22,10 +22,10 @@ class ReplyController {
     @Autowired
     private ReplyService replyService; 
 
-    @GetMapping("/findRepliesInLast15Days")
-    public List<Reply> findRepliesInLast15Days(@RequestParam String forumName, @RequestParam String threadSubject)
+    @GetMapping("/findRepliesInLastDays")
+    public List<Reply> findRepliesInLastDays(@RequestParam String forumName, @RequestParam String threadSubject, @RequestParam(defaultValue = "15") int days)
             throws Exception {
-        return replyService.findRepliesInLast15Days(forumName, threadSubject);
+        return replyService.findRepliesInLastDays(forumName, threadSubject, days);
     }
 
     @GetMapping("/findRepliesPostedWithinTimePeriod")
