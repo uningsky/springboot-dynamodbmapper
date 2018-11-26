@@ -1,7 +1,5 @@
 package com.example.dynamodbcrud.services;
 
-import java.util.List;
-
 import com.example.dynamodbcrud.models.CatalogItem;
 
 public interface ProductCatalogService {
